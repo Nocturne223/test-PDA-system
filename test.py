@@ -76,7 +76,7 @@ with st.sidebar:
 
 
 
-tab1, tab2, tab2 = st.tabs(["Home", "Crop Health Assessment", "About Crop Health Assessment"])
+tab1, tab2 = st.tabs(["Crop Health Assessment", "About Crop Health Assessment"])
 
 with tab1:
     # selecting method for health assessment
