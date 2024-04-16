@@ -4,10 +4,10 @@ import numpy as np
 from PIL import Image
 from keras.models import load_model
 
-model1 = load_model('../official-models/LettuceModel.h5')  # saved model from training
-model2 = load_model('../official-models/CauliflowerModel.h5')  # saved model from training
-model3 = load_model('../official-models/SugarcaneModel-1.h5')  # saved model from training
-model4 = load_model('../official-models/PepperModel.h5')  # saved model from training
+model1 = load_model('official-models/LettuceModel.h5')  # saved model from training
+model2 = load_model('official-models/CauliflowerModel.h5')  # saved model from training
+model3 = load_model('official-models/SugarcaneModel-1.h5')  # saved model from training
+model4 = load_model('official-models/PepperModel.h5')  # saved model from training
 
 Lettuce_names = ["lettuce_BacterialLeafSpot", "lettuce_BotrytisCrownRot", "lettuce_DownyMildew", "lettuce_Healthy"]
 
