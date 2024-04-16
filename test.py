@@ -149,6 +149,15 @@ def display_recommendations(predicted_class):
     for recommendation in recommendations.get(predicted_class, []):
         st.write(recommendation)
 
+# Function to generate a Feedback form
+def feedback():
+    with st.form(key="my_form"):
+        st.subheader("Feedback*",divider="gray")
+        c1, c2 = st.columns(2)
+        feed = c1.text_area("message",placeholder="Write a message...",label_visibility="collapsed",)
+        b1 = c2.form_submit_button("Send",use_container_width=True)
+        b2 = c2.form_submit_button("Cancel",use_container_width=True)
+
 # Sidebar content
 with st.sidebar:
     st.subheader('About Us', divider='gray')
@@ -165,9 +174,41 @@ with st.sidebar:
     )
 
 # Main content
-tab1, tab2 = st.tabs(["Crop Health Assessment", "About Crop Health Assessment"])
+tab1, tab2, tab3 = st.tabs(["Home", "Crop Health Assessment", "About Crop Health Assessment"])
 
 with tab1:
+    st.title("Welcome to Crop Health Assessment App",False)
+    
+    col1, col2 = st.columns(2)
+    col1.image("screenshots/PPrediction1.jpeg")
+    col2.image("screenshots/PPrediction2.jpeg")
+    
+    st.write("""
+        Welcome to the Crop Health Assessment App! This application aims to assist you in analyzing the health of your crops using advanced machine learning techniques.
+
+        ## How to Use Camera Method
+        - Proceed to Crop Health Assessment Tab.
+        - Select the "Camera" option to capture an image of your crop.
+        - Click "Allow" in the Popup message to use your device camera.
+        - Click "Take Photo" to capture an image of your crop.
+        - Choose the type of crop from the dropdown menu.
+        - Click on the "Submit" button to analyze the uploaded image.
+        
+        ## How to Use Upload Method
+        - Proceed to Crop Health Assessment Tab.
+        - Select the "Upload" option to upload an image of your crop.
+        - Choose the image file from your device.
+        - Choose the type of crop from the dropdown menu.
+        - Click on the "Submit" button to analyze the uploaded image.
+
+        ## Method
+        You can either upload an image from your device or use your device's camera to capture an image directly.
+
+        ## About Us
+        This app is developed by Christian Jerome S. Detuya, Albert James E. Mangcao, and Axel Bert E. Ramos as part of the Crop Health Assessment project.
+    """)
+
+with tab2:
     # selecting method for health assessment
     st.subheader("SELECT A METHOD")
     pick = st.selectbox("Select Method",('Upload','Camera'),label_visibility="hidden")
@@ -190,7 +231,7 @@ with tab1:
                     image_path = plantpic
                     predicted_class = predict_disease(model1, image_path, Lettuce_names)
                     pred1 = "Predicted Disease Class: " + predicted_class
-                    st.image(plantpic, pred1)
+                    st.image(plantpic, pred1, use_column_width=True)
 
                     # Generate and display recommendations
                     input_text = "Lettuce " + predicted_class + ":"
@@ -205,7 +246,7 @@ with tab1:
                     image_path = plantpic
                     predicted_class = predict_disease(model2, image_path, Cauliflower_names)
                     pred2 = "Predicted Disease Class: " + predicted_class
-                    st.image(plantpic, pred2)
+                    st.image(plantpic, pred2, use_column_width=True)
 
                     # Generate and display recommendations
                     input_text = "Cauliflower " + predicted_class + ":"
@@ -220,7 +261,7 @@ with tab1:
                     image_path = plantpic
                     predicted_class = predict_disease(model3, image_path, Sugarcane_names)
                     pred3 = "Predicted Disease Class: " + predicted_class
-                    st.image(plantpic, pred3)
+                    st.image(plantpic, pred3, use_column_width=True)
 
                     # Generate and display recommendations
                     input_text = "Sugarcane " + predicted_class + ":"
@@ -235,7 +276,7 @@ with tab1:
                     image_path = plantpic
                     predicted_class = predict_disease(model4, image_path, Pepper_names)
                     pred4 = "Predicted Disease Class: " + predicted_class
-                    st.image(plantpic, pred4)
+                    st.image(plantpic, pred4, use_column_width=True)
 
                     # Generate and display recommendations
                     input_text = "Pepper " + predicted_class + ":"
@@ -244,6 +285,8 @@ with tab1:
 
                     # Display specific recommendations for the predicted class
                     display_recommendations(predicted_class)
+                    
+                    feedback()
 
     elif pick == 'Upload':
         st.subheader("Upload Image File")
@@ -262,7 +305,7 @@ with tab1:
                     image_path = plantpic
                     predicted_class = predict_disease(model1, image_path, Lettuce_names)
                     pred1 = "Predicted Disease Class: " + predicted_class
-                    st.image(plantpic, pred1)
+                    st.image(plantpic, pred1, use_column_width=True)
 
                     # Generate and display recommendations
                     input_text = "Lettuce " + predicted_class + ":"
@@ -277,7 +320,7 @@ with tab1:
                     image_path = plantpic
                     predicted_class = predict_disease(model2, image_path, Cauliflower_names)
                     pred2 = "Predicted Disease Class: " + predicted_class
-                    st.image(plantpic, pred2)
+                    st.image(plantpic, pred2, use_column_width=True)
 
                     # Generate and display recommendations
                     input_text = "Cauliflower " + predicted_class + ":"
@@ -292,7 +335,7 @@ with tab1:
                     image_path = plantpic
                     predicted_class = predict_disease(model3, image_path, Sugarcane_names)
                     pred3 = "Predicted Disease Class: " + predicted_class
-                    st.image(plantpic, pred3)
+                    st.image(plantpic, pred3, use_column_width=True)
 
                     # Generate and display recommendations
                     input_text = "Sugarcane " + predicted_class + ":"
@@ -307,7 +350,7 @@ with tab1:
                     image_path = plantpic
                     predicted_class = predict_disease(model4, image_path, Pepper_names)
                     pred4 = "Predicted Disease Class: " + predicted_class
-                    st.image(plantpic, pred4)
+                    st.image(plantpic, pred4, use_column_width=True)
 
                     # Generate and display recommendations
                     input_text = "Pepper " + predicted_class + ":"
@@ -316,8 +359,10 @@ with tab1:
 
                     # Display specific recommendations for the predicted class
                     display_recommendations(predicted_class)
+                    
+                    feedback()
 
-with tab2:
+with tab3:
     """
     The "Deep Learning and Machine Learning Integration: A Comprehensive Approach to Automated Crop Health Assessment Using CNN, ANN, and SVM" project aims to revolutionize crop health assessment in agriculture through cutting-edge technology and advanced machine learning techniques. By leveraging Convolutional Neural Networks (CNN), Artificial Neural Networks (ANN), and Support Vector Machines (SVM), the project endeavors to automate the process of evaluating crop health, thereby enhancing agricultural practices and promoting sustainability.
 
