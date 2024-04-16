@@ -42,7 +42,7 @@ tab1, tab2 = st.tabs(["Crop Health Assessment", "About Crop Health Assessment"])
 with tab1:
     # selecting method for health assessment
     st.subheader("SELECT A METHOD")
-    pick = st.selectbox("Select Method",('Camera','Upload'),label_visibility="hidden")
+    pick = st.selectbox("Select Method",('Upload','Camera'),label_visibility="hidden")
 
     if pick == 'Camera':
         st.subheader("Camera Input")
