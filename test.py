@@ -137,6 +137,7 @@ with tab1:
         - Proceed to Crop Health Assessment Tab.
         - Select the "Camera" option to capture an image of your crop.
         - Click "Allow" in the Popup message to use your device camera.
+        - Click "Take Photo" to capture an image of your crop.
         - Choose the type of crop from the dropdown menu.
         - Click on the "Submit" button to analyze the uploaded image.
         
