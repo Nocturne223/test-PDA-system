@@ -4,6 +4,9 @@ import numpy as np
 from PIL import Image
 from keras.models import load_model
 
+# Set page title and favicon
+st.set_page_config(page_title="Crop Health Assessment App", page_icon="🌱")
+
 # Define function to enhance design and layout
 def enhance_ui():
     # Set page layout
@@ -38,6 +41,12 @@ def L_predict_disease(image_path):
     prediction = model1.predict(preprocessed_img)
     disease_index = np.argmax(prediction)  # Get the index of the predicted Lettuce class
     disease_class = Lettuce_names[disease_index] # Fetch the class name using the index
+    
+    if prediction.max() < threshold :   
+        disease_class = "Unidentified plant"
+        
+    # st.write(prediction.max()) # print the maximum predicted probability
+    
     return disease_class
 
 def C_predict_disease(image_path):
@@ -45,6 +54,10 @@ def C_predict_disease(image_path):
     prediction = model2.predict(preprocessed_img)
     disease_index = np.argmax(prediction)  # Get the index of the predicted Cauliflower class
     disease_class = Cauliflower_names[disease_index] # Fetch the class name using the index
+    
+    if prediction.max() < threshold :   
+        disease_class = "Unidentified plant"
+    
     return disease_class
 
 def S_predict_disease(image_path):
@@ -52,6 +65,10 @@ def S_predict_disease(image_path):
     prediction = model3.predict(preprocessed_img)
     disease_index = np.argmax(prediction)  # Get the index of the predicted Sugarcane class
     disease_class = Sugarcane_names[disease_index] # Fetch the class name using the index
+    
+    if prediction.max() < threshold :   
+        disease_class = "Unidentified plant"
+        
     return disease_class
 
 def P_predict_disease(image_path):
@@ -59,7 +76,19 @@ def P_predict_disease(image_path):
     prediction = model4.predict(preprocessed_img)
     disease_index = np.argmax(prediction)  # Get the index of the predicted Pepper class
     disease_class = Pepper_names[disease_index] # Fetch the class name using the index
+    
+    if prediction.max() < threshold :   
+        disease_class = "Unidentified plant"
+        
     return disease_class
+
+def feedback():
+    with st.form(key="my_form"):
+        st.subheader("Feedback*",divider="gray")
+        c1, c2 = st.columns(2)
+        feed = c1.text_area("message",placeholder="Write a message...",label_visibility="collapsed",)
+        b1 = c2.form_submit_button("Send",use_container_width=True)
+        b2 = c2.form_submit_button("Cancel",use_container_width=True)
 
 
 # =======================================
@@ -80,6 +109,12 @@ with st.sidebar:
         
         """
         )
+    
+    # Add interactive elements
+    st.sidebar.subheader("Analysis Settings")
+    threshold = st.sidebar.slider("Confidence Threshold", min_value=0.0, max_value=1.0, value=0.5, step=None, help="Adjust the confidence threshold for classification")
+    # crop_type = st.sidebar.selectbox("Select Crop Type", ["Cauliflower", "Pepper", "Sugarcane", "Lettuce"], help="Choose the type of crop for analysis")
+    
 
 
 # Run the app
@@ -89,11 +124,17 @@ with st.sidebar:
 tab1, tab2, tab3 = st.tabs(["Home", "Crop Health Assessment", "About Crop Health Assessment"])
 
 with tab1:
-    st.title("Welcome to Crop Health Assessment App")
+    st.title("Welcome to Crop Health Assessment App",False)
+    
+    col1, col2 = st.columns(2)
+    col1.image("screenshots/PPrediction1.jpeg")
+    col2.image("screenshots/PPrediction2.jpeg")
+    
     st.write("""
         Welcome to the Crop Health Assessment App! This application aims to assist you in analyzing the health of your crops using advanced machine learning techniques.
 
-        ## How to Use
+        ## How to Use 
+        - Proceed to Crop Health Assessment Tab.
         - Select the "Upload" option to upload an image of your crop.
         - Choose the type of crop from the dropdown menu.
         - Click on the "Submit" button to analyze the uploaded image.
@@ -112,15 +153,15 @@ with tab2:
     st.info("For optimal results, ensure that the uploaded image is clear and properly centered on the plant of interest.")
     
     # selecting method for health assessment
-    st.subheader("SELECT A METHOD")
-    pick = st.selectbox("Select Method",('Upload','Camera'),label_visibility="hidden")
+    st.subheader("SELECT A METHOD",False)
+    pick = st.selectbox("Select Method",('Upload','Camera'),label_visibility="collapsed")
 
     if pick == 'Camera':
-        st.subheader("Camera Input")
-        plantpic = st.camera_input("take a plant picture",label_visibility="hidden")
+        st.subheader("Camera Input",False)
+        plantpic = st.camera_input("take a plant picture",label_visibility="collapsed")
         
-        st.subheader("Select A Plant")
-        select = st.selectbox("Select Plant",('Lettuce','Cauliflower','Sugarcane','Pepper'),label_visibility="hidden")
+        st.subheader("Select A Plant",False)
+        select = st.selectbox("Select Plant",('Lettuce','Cauliflower','Sugarcane','Pepper'),label_visibility="collapsed")
          
         submit = st.button("submit",use_container_width=True)
         
@@ -155,13 +196,15 @@ with tab2:
                 predicted_class = P_predict_disease(image_path)
                 pred4 = "Predicted Disease Class: " + predicted_class
                 st.image(plantpic,pred4)
+                
+            feedback()
                
             
     elif pick == 'Upload':
-        st.subheader("Upload Image File")
+        st.subheader("Upload Image File",False)
         plantpic = st.file_uploader("upload",['jpg','png','gif','webp','tiff','psd','raw','bmp','jfif'],False,label_visibility="hidden")
         
-        st.subheader("Select A Plant")
+        st.subheader("Select A Plant",False)
         select = st.selectbox("Select Plant",('Lettuce','Cauliflower','Sugarcane','Pepper'),label_visibility="hidden")
         
         submit1 = st.button("submit",use_container_width=True)
@@ -197,11 +240,7 @@ with tab2:
                 pred4 = "Predicted Disease Class: " + predicted_class
                 st.image(plantpic,pred4)
                 
-    # Add interactive elements
-    st.sidebar.subheader("Analysis Settings")
-    threshold = st.sidebar.slider("Confidence Threshold", min_value=0.0, max_value=1.0, value=0.5, step=0.05, help="Adjust the confidence threshold for classification")
-    crop_type = st.sidebar.selectbox("Select Crop Type", ["Cauliflower", "Pepper", "Sugarcane", "Lettuce"], help="Choose the type of crop for analysis")
-    
+            feedback()
 
 with tab3:
     """
