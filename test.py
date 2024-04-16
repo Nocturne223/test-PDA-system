@@ -79,7 +79,14 @@ with st.sidebar:
         Axel Bert E. Ramos
         
         """
+        
+    # Add interactive elements
+    st.sidebar.subheader("Analysis Settings")
+    threshold = st.sidebar.slider("Confidence Threshold", min_value=0.0, max_value=1.0, value=0.5, step=0.05, help="Adjust the confidence threshold for classification")
+    # crop_type = st.sidebar.selectbox("Select Crop Type", ["Cauliflower", "Pepper", "Sugarcane", "Lettuce"], help="Choose the type of crop for analysis")
+    
         )
+
 
 
 # Run the app
@@ -196,12 +203,6 @@ with tab2:
                 predicted_class = P_predict_disease(image_path)
                 pred4 = "Predicted Disease Class: " + predicted_class
                 st.image(plantpic,pred4)
-                
-    # Add interactive elements
-    st.sidebar.subheader("Analysis Settings")
-    threshold = st.sidebar.slider("Confidence Threshold", min_value=0.0, max_value=1.0, value=0.5, step=0.05, help="Adjust the confidence threshold for classification")
-    crop_type = st.sidebar.selectbox("Select Crop Type", ["Cauliflower", "Pepper", "Sugarcane", "Lettuce"], help="Choose the type of crop for analysis")
-    
 
 with tab3:
     """
