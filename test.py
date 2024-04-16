@@ -95,9 +95,26 @@ with st.sidebar:
 
 
 
-tab1, tab2 = st.tabs(["Crop Health Assessment", "About Crop Health Assessment"])
+tab1, tab2, tab3 = st.tabs(["Home", "Crop Health Assessment", "About Crop Health Assessment"])
 
 with tab1:
+    st.title("Welcome to Crop Health Assessment App")
+    st.write("""
+        Welcome to the Crop Health Assessment App! This application aims to assist you in analyzing the health of your crops using advanced machine learning techniques.
+
+        ## How to Use
+        - Select the "Upload" option to upload an image of your crop.
+        - Choose the type of crop from the dropdown menu.
+        - Click on the "Submit" button to analyze the uploaded image.
+
+        ## Method
+        You can either upload an image from your device or use your device's camera to capture an image directly.
+
+        ## About Us
+        This app is developed by Christian Jerome S. Detuya, Albert James E. Mangcao, and Axel Bert E. Ramos as part of the Crop Health Assessment project.
+    """)
+
+with tab2:
     # selecting method for health assessment
     st.subheader("SELECT A METHOD")
     pick = st.selectbox("Select Method",('Upload','Camera'),label_visibility="hidden")
@@ -186,7 +203,7 @@ with tab1:
                 
     
 
-with tab2:
+with tab3:
     """
     The "Deep Learning and Machine Learning Integration: A Comprehensive Approach to Automated Crop Health Assessment Using CNN, ANN, and SVM" project aims to revolutionize crop health assessment in agriculture through cutting-edge technology and advanced machine learning techniques. By leveraging Convolutional Neural Networks (CNN), Artificial Neural Networks (ANN), and Support Vector Machines (SVM), the project endeavors to automate the process of evaluating crop health, thereby enhancing agricultural practices and promoting sustainability.
 
@@ -200,3 +217,7 @@ Additionally, SVM plays a crucial role in the classification of crops based on t
 Through the integration of CNN, ANN, and SVM, the project not only advances the field of automated crop health assessment but also contributes to the broader goals of precision agriculture and sustainable farming practices. By harnessing the power of deep learning and machine learning, this research endeavors to redefine how crop quality is evaluated, ultimately leading to higher crop yields, reduced losses, and a more resilient agricultural ecosystem.
     
     """
+    
+# Run the app
+if __name__ == "__main__":
+    enhance_ui()
