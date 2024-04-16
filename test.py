@@ -184,28 +184,28 @@ with tab2:
                 image_path = plantpic
                 predicted_class = L_predict_disease(image_path)
                 pred1 = "Predicted Disease Class: " + predicted_class
-                st.image(plantpic,pred1)
+                st.image(plantpic,pred1,use_column_width=True)
                 
             elif select == 'Cauliflower':
                 # predicting Cauliflower disease
                 image_path = plantpic
                 predicted_class = C_predict_disease(image_path)
                 pred2 = "Predicted Disease Class: " + predicted_class
-                st.image(plantpic,pred2)
+                st.image(plantpic,pred2,use_column_width=True)
                 
             elif select == 'Sugarcane':
                 # predicting Sugarcane disease
                 image_path = plantpic
                 predicted_class = S_predict_disease(image_path)
                 pred3 = "Predicted Disease Class: " + predicted_class
-                st.image(plantpic,pred3)
+                st.image(plantpic,pred3,use_column_width=True)
                 
             elif select == 'Pepper':
                 # predicting Pepper disease
                 image_path = plantpic
                 predicted_class = P_predict_disease(image_path)
                 pred4 = "Predicted Disease Class: " + predicted_class
-                st.image(plantpic,pred4)
+                st.image(plantpic,pred4,use_column_width=True)
                 
             feedback()
                
@@ -227,28 +227,28 @@ with tab2:
                 image_path = plantpic
                 predicted_class = L_predict_disease(image_path)
                 pred1 = "Predicted Disease Class: " + predicted_class
-                st.image(plantpic,pred1)
+                st.image(plantpic,pred1,use_column_width=True)
                 
             elif select == 'Cauliflower':
                 # predicting Cauliflower disease
                 image_path = plantpic
                 predicted_class = C_predict_disease(image_path)
                 pred2 = "Predicted Disease Class: " + predicted_class
-                st.image(plantpic,pred2)
+                st.image(plantpic,pred2,use_column_width=True)
                 
             elif select == 'Sugarcane':
                 # predicting Sugarcane disease
                 image_path = plantpic
                 predicted_class = S_predict_disease(image_path)
                 pred3 = "Predicted Disease Class: " + predicted_class
-                st.image(plantpic,pred3)
+                st.image(plantpic,pred3,use_column_width=True)
                 
             elif select == 'Pepper':
                 # predicting Pepper disease
                 image_path = plantpic
                 predicted_class = P_predict_disease(image_path)
                 pred4 = "Predicted Disease Class: " + predicted_class
-                st.image(plantpic,pred4)
+                st.image(plantpic,pred4,use_column_width=True)
                 
             feedback()
 
