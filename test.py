@@ -133,9 +133,17 @@ with tab1:
     st.write("""
         Welcome to the Crop Health Assessment App! This application aims to assist you in analyzing the health of your crops using advanced machine learning techniques.
 
-        ## How to Use 
+        ## How to Use Camera Method
+        - Proceed to Crop Health Assessment Tab.
+        - Select the "Camera" option to capture an image of your crop.
+        - Click "Allow" in the Popup message to use your device camera.
+        - Choose the type of crop from the dropdown menu.
+        - Click on the "Submit" button to analyze the uploaded image.
+        
+        ## How to Use Upload Method
         - Proceed to Crop Health Assessment Tab.
         - Select the "Upload" option to upload an image of your crop.
+        - Choose the image file from your device.
         - Choose the type of crop from the dropdown menu.
         - Click on the "Submit" button to analyze the uploaded image.
 
@@ -154,7 +162,7 @@ with tab2:
     
     # selecting method for health assessment
     st.subheader("SELECT A METHOD",False)
-    pick = st.selectbox("Select Method",('Upload','Camera'),label_visibility="collapsed")
+    pick = st.selectbox("Select Method",('Camera','Upload'),label_visibility="collapsed")
 
     if pick == 'Camera':
         st.subheader("Camera Input",False)
