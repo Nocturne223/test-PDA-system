@@ -2,7 +2,7 @@ import os
 import streamlit as st
 import numpy as np
 from PIL import Image
-from keras.models import load_model
+# from keras.models import load_model
 
 
 Lettuce_names = ["lettuce_BacterialLeafSpot", "lettuce_BotrytisCrownRot", "lettuce_DownyMildew", "lettuce_Healthy"]
