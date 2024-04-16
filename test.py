@@ -4,6 +4,10 @@ import numpy as np
 from PIL import Image
 from keras.models import load_model
 
+model1 = load_model('../official-models/LettuceModel.h5')  # saved model from training
+model2 = load_model('../official-models/CauliflowerModel.h5')  # saved model from training
+model3 = load_model('../official-models/SugarcaneModel-1.h5')  # saved model from training
+model4 = load_model('../official-models/PepperModel.h5')  # saved model from training
 
 Lettuce_names = ["lettuce_BacterialLeafSpot", "lettuce_BotrytisCrownRot", "lettuce_DownyMildew", "lettuce_Healthy"]
 
@@ -14,6 +18,41 @@ Sugarcane_names = ["sugarcane_Healthy", "sugarcane_Mosaic", "sugarcane_RedRot", 
 Pepper_names = ["pepper_Healthy", "pepper_CercosporaLeafSpot", "pepper_Fusarium", "pepper_Leaf_Curl"]
 
 folder_path = "saved_images"
+
+def preprocess_image(image_path):
+    img = Image.open(image_path)
+    img = img.resize((256, 256))  # Resize image to match model's input shape
+    img_array = np.array(img) / 255.0  # Normalize pixel values to range [0, 1]
+    img_array = np.expand_dims(img_array, axis=0)  # Add batch dimension
+    return img_array
+
+def L_predict_disease(image_path):
+    preprocessed_img = preprocess_image(image_path)
+    prediction = model1.predict(preprocessed_img)
+    disease_index = np.argmax(prediction)  # Get the index of the predicted Lettuce class
+    disease_class = Lettuce_names[disease_index] # Fetch the class name using the index
+    return disease_class
+
+def C_predict_disease(image_path):
+    preprocessed_img = preprocess_image(image_path)
+    prediction = model2.predict(preprocessed_img)
+    disease_index = np.argmax(prediction)  # Get the index of the predicted Cauliflower class
+    disease_class = Cauliflower_names[disease_index] # Fetch the class name using the index
+    return disease_class
+
+def S_predict_disease(image_path):
+    preprocessed_img = preprocess_image(image_path)
+    prediction = model3.predict(preprocessed_img)
+    disease_index = np.argmax(prediction)  # Get the index of the predicted Sugarcane class
+    disease_class = Sugarcane_names[disease_index] # Fetch the class name using the index
+    return disease_class
+
+def P_predict_disease(image_path):
+    preprocessed_img = preprocess_image(image_path)
+    prediction = model4.predict(preprocessed_img)
+    disease_index = np.argmax(prediction)  # Get the index of the predicted Pepper class
+    disease_class = Pepper_names[disease_index] # Fetch the class name using the index
+    return disease_class
 
 
 # =======================================
