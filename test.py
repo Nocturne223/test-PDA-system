@@ -9,10 +9,6 @@ def enhance_ui():
     # Set page layout
     st.title("Crop Health Assessment App")
     st.write("Welcome to the Crop Health Assessment App! Upload an image or even take a picture of a plant to analyze its health.")
-    
-    # Add informative tooltips
-    st.info("ℹ️ Tip: Adjust the confidence threshold to control the sensitivity of the analysis.")
-    st.info("For optimal results, ensure that the uploaded image is clear and properly centered on the plant of interest.")
 
 
 model1 = load_model('official-models/LettuceModel.h5')  # saved model from training
@@ -87,8 +83,8 @@ with st.sidebar:
 
 
 # Run the app
-if __name__ == "__main__":
-    enhance_ui()
+# if __name__ == "__main__":
+#     enhance_ui()
 
 tab1, tab2, tab3 = st.tabs(["Home", "Crop Health Assessment", "About Crop Health Assessment"])
 
@@ -110,6 +106,11 @@ with tab1:
     """)
 
 with tab2:
+    
+    # Add informative tooltips
+    st.info("ℹ️ Tip: Adjust the confidence threshold to control the sensitivity of the analysis.")
+    st.info("For optimal results, ensure that the uploaded image is clear and properly centered on the plant of interest.")
+    
     # selecting method for health assessment
     st.subheader("SELECT A METHOD")
     pick = st.selectbox("Select Method",('Upload','Camera'),label_visibility="hidden")
