@@ -60,30 +60,30 @@ with tab1:
             elif select == 'Lettuce':
                 # predicting Lettuce disease
                 image_path = plantpic
-                # predicted_class = L_predict_disease(image_path)
-                # pred1 = "Predicted Disease Class: " + predicted_class
-                # st.image(plantpic,pred1)
+                predicted_class = L_predict_disease(image_path)
+                pred1 = "Predicted Disease Class: " + predicted_class
+                st.image(plantpic,pred1)
                 
             elif select == 'Cauliflower':
                 # predicting Cauliflower disease
                 image_path = plantpic
-                # predicted_class = C_predict_disease(image_path)
-                # pred2 = "Predicted Disease Class: " + predicted_class
-                # st.image(plantpic,pred2)
+                predicted_class = C_predict_disease(image_path)
+                pred2 = "Predicted Disease Class: " + predicted_class
+                st.image(plantpic,pred2)
                 
             elif select == 'Sugarcane':
                 # predicting Sugarcane disease
                 image_path = plantpic
-                # predicted_class = S_predict_disease(image_path)
-                # pred3 = "Predicted Disease Class: " + predicted_class
-                # st.image(plantpic,pred3)
+                predicted_class = S_predict_disease(image_path)
+                pred3 = "Predicted Disease Class: " + predicted_class
+                st.image(plantpic,pred3)
                 
             elif select == 'Pepper':
                 # predicting Pepper disease
                 image_path = plantpic
-                # predicted_class = P_predict_disease(image_path)
-                # pred4 = "Predicted Disease Class: " + predicted_class
-                # st.image(plantpic,pred4)
+                predicted_class = P_predict_disease(image_path)
+                pred4 = "Predicted Disease Class: " + predicted_class
+                st.image(plantpic,pred4)
                
             
     elif pick == 'Upload':
@@ -101,30 +101,30 @@ with tab1:
             elif select == 'Lettuce':
                 # predicting Lettuce disease
                 image_path = plantpic
-                # predicted_class = L_predict_disease(image_path)
-                # pred1 = "Predicted Disease Class: " + predicted_class
-                # st.image(plantpic,pred1)
+                predicted_class = L_predict_disease(image_path)
+                pred1 = "Predicted Disease Class: " + predicted_class
+                st.image(plantpic,pred1)
                 
             elif select == 'Cauliflower':
                 # predicting Cauliflower disease
                 image_path = plantpic
-                # predicted_class = C_predict_disease(image_path)
-                # pred2 = "Predicted Disease Class: " + predicted_class
-                # st.image(plantpic,pred2)
+                predicted_class = C_predict_disease(image_path)
+                pred2 = "Predicted Disease Class: " + predicted_class
+                st.image(plantpic,pred2)
                 
             elif select == 'Sugarcane':
                 # predicting Sugarcane disease
                 image_path = plantpic
-                # predicted_class = S_predict_disease(image_path)
-                # pred3 = "Predicted Disease Class: " + predicted_class
-                # st.image(plantpic,pred3)
+                predicted_class = S_predict_disease(image_path)
+                pred3 = "Predicted Disease Class: " + predicted_class
+                st.image(plantpic,pred3)
                 
             elif select == 'Pepper':
                 # predicting Pepper disease
                 image_path = plantpic
-                # predicted_class = P_predict_disease(image_path)
-                # pred4 = "Predicted Disease Class: " + predicted_class
-                # st.image(plantpic,pred4)
+                predicted_class = P_predict_disease(image_path)
+                pred4 = "Predicted Disease Class: " + predicted_class
+                st.image(plantpic,pred4)
                 
     
 
