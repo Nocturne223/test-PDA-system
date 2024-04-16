@@ -4,6 +4,7 @@ import numpy as np
 from PIL import Image
 from keras.models import load_model
 
+# Load CNN Models
 model1 = load_model('official-models/LettuceModel.h5')  # saved model from training
 model2 = load_model('official-models/CauliflowerModel.h5')  # saved model from training
 model3 = load_model('official-models/SugarcaneModel-1.h5')  # saved model from training
@@ -18,6 +19,7 @@ Sugarcane_names = ["sugarcane_Healthy", "sugarcane_Mosaic", "sugarcane_RedRot", 
 Pepper_names = ["pepper_Healthy", "pepper_CercosporaLeafSpot", "pepper_Fusarium", "pepper_Leaf_Curl"]
 
 folder_path = "saved_images"
+
 
 def preprocess_image(image_path):
     img = Image.open(image_path)
