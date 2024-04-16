@@ -3,7 +3,7 @@ import streamlit as st
 import numpy as np
 from PIL import Image
 from keras.models import load_model
-# import torch
+import torch
 from transformers import GPT2LMHeadModel, GPT2Tokenizer
 
 # Set page title and favicon
