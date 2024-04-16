@@ -3,8 +3,6 @@ import streamlit as st
 import numpy as np
 from PIL import Image
 from keras.models import load_model
-import torch
-from transformers import GPT2LMHeadModel, GPT2Tokenizer
 
 # Set page title and favicon
 st.set_page_config(page_title="Crop Health Assessment App", page_icon="🌱")
@@ -15,120 +13,23 @@ def enhance_ui():
     st.title("Crop Health Assessment App")
     st.write("Welcome to the Crop Health Assessment App! Upload an image or even take a picture of a plant to analyze its health.")
 
-# Load CNN Models
+
 model1 = load_model('official-models/LettuceModel.h5')  # saved model from training
 model2 = load_model('official-models/CauliflowerModel.h5')  # saved model from training
 model3 = load_model('official-models/SugarcaneModel-1.h5')  # saved model from training
 model4 = load_model('official-models/PepperModel.h5')  # saved model from training
 
-# Load GPT-2 model and tokenizer
-model_gpt2 = GPT2LMHeadModel.from_pretrained("gpt2")
-tokenizer_gpt2 = GPT2Tokenizer.from_pretrained("gpt2")
-
-# Define plant class names
 Lettuce_names = ["lettuce_BacterialLeafSpot", "lettuce_BotrytisCrownRot", "lettuce_DownyMildew", "lettuce_Healthy"]
+
 Cauliflower_names = ["cauliflower_BlackRot", "cauliflower_DownyMildew", "cauliflower_Healthy", "cauliflower_SoftRot"]
+
 Sugarcane_names = ["sugarcane_Healthy", "sugarcane_Mosaic", "sugarcane_RedRot", "sugarcane_Rust"]
+
 Pepper_names = ["pepper_Healthy", "pepper_CercosporaLeafSpot", "pepper_Fusarium", "pepper_Leaf_Curl"]
 
 folder_path = "saved_images"
 
-# Define recommendations for each class
-recommendations = {
-    "lettuce_BacterialLeafSpot": [
-        "Use disease-resistant lettuce varieties whenever possible.",
-        "Practice crop rotation with non-host crops to reduce the buildup of bacterial pathogens in the soil.",
-        "Avoid overhead irrigation to minimize leaf wetness, as bacterial leaf spot thrives in moist conditions.",
-        "Apply copper-based fungicides or bactericides according to label instructions, especially during periods of high humidity or when symptoms first appear."
-    ],
-    "lettuce_BotrytisCrownRot": [
-        "Practice proper spacing between plants to improve air circulation and reduce humidity levels around the lettuce crowns.",
-        "Avoid overhead irrigation and water lettuce at the base to prevent water accumulation in the crown.",
-        "Remove and destroy infected plants and debris to prevent the spread of the fungus.",
-        "Apply fungicides containing active ingredients such as iprodione or boscalid to protect healthy plants from infection."
-    ],
-    "lettuce_DownyMildew": [
-        "Plant lettuce varieties with genetic resistance to downy mildew if available.",
-        "Ensure proper drainage to prevent waterlogging, as downy mildew thrives in wet conditions.",
-        "Apply fungicides containing active ingredients such as metalaxyl, mandipropamid, or chlorothalonil according to label instructions, especially during periods of high humidity or when symptoms first appear."
-    ],
-    "lettuce_Healthy": [
-        "Maintain consistent soil moisture levels to ensure even growth and prevent stress.",
-        "Provide adequate spacing between plants to promote air circulation and reduce the risk of foliar diseases.",
-        "Monitor for signs of pests and diseases regularly, and take prompt action if detected.",
-        "Implement good sanitation practices, including removing debris and weeds, to reduce the risk of disease spread."
-    ],
-    "cauliflower_BlackRot": [
-        "Practice crop rotation with non-cruciferous crops to reduce the buildup of black rot pathogens in the soil.",
-        "Remove and destroy infected plant debris to prevent the spread of the disease.",
-        "Apply fungicides containing active ingredients such as copper or chlorothalonil according to label instructions, especially during periods of high humidity or when symptoms first appear."
-    ],
-    "cauliflower_DownyMildew": [
-        "Plant cauliflower varieties with genetic resistance to downy mildew if available.",
-        "Ensure proper spacing between plants to improve air circulation and reduce humidity levels.",
-        "Apply fungicides containing active ingredients such as mandipropamid, fosetyl-aluminum, or copper hydroxide according to label instructions, especially during periods of high humidity or when symptoms first appear."
-    ],
-    "cauliflower_SoftRot": [
-        "Practice proper sanitation and hygiene to prevent contamination of cauliflower heads during harvesting and handling.",
-        "Harvest cauliflower heads at the correct maturity stage and handle them carefully to avoid bruising or injury.",
-        "Store harvested cauliflower heads in cool, dry conditions to minimize the risk of soft rot development.",
-        "Apply fungicides containing active ingredients such as iprodione or thiophanate-methyl to protect harvested cauliflower heads from soft rot during storage."
-    ],
-    "cauliflower_Healthy": [
-        "Provide consistent moisture and fertility to support healthy growth and development.",
-        "Monitor for signs of pests and diseases regularly, and take prompt action if detected.",
-        "Implement good cultural practices, including proper spacing and soil management, to promote plant health and vigor."
-    ],
-    "sugarcane_Healthy": [
-        "Implement proper irrigation and drainage practices to ensure adequate moisture without waterlogging.",
-        "Monitor for signs of pests and diseases regularly, and take prompt action if detected.",
-        "Implement good cultural practices, including weed control and soil management, to promote plant health and vigor."
-    ],
-    "sugarcane_Mosaic": [
-        "Plant mosaic-resistant sugarcane varieties whenever possible.",
-        "Use certified disease-free seed cane to minimize the risk of mosaic virus transmission.",
-        "Implement strict sanitation practices to prevent the spread of mosaic virus within the sugarcane plantation.",
-        "Control aphid populations, which can transmit mosaic virus, through insecticide applications or cultural practices."
-    ],
-    "sugarcane_RedRot": [
-        "Use disease-free seed cane from reputable sources to prevent the introduction of red rot pathogens.",
-        "Practice proper sanitation and hygiene to prevent the spread of red rot within the sugarcane plantation.",
-        "Apply fungicides containing active ingredients such as mancozeb or thiophanate-methyl to protect healthy plants from infection."
-    ],
-    "sugarcane_Rust": [
-        "Plant rust-resistant sugarcane varieties whenever possible.",
-        "Ensure proper spacing between sugarcane rows to promote air circulation and reduce humidity levels, which can favor rust development.",
-        "Apply fungicides containing active ingredients such as propiconazole or tebuconazole according to label instructions, especially during periods of high humidity or when rust symptoms first appear."
-    ],
-    "pepper_Healthy": [
-        "Provide consistent moisture and fertility to support healthy growth and development.",
-        "Monitor for signs of pests and diseases regularly, and take prompt action if detected.",
-        "Implement good cultural practices, including proper spacing and soil management, to promote plant health and vigor.",
-        "Use mulch to conserve soil moisture, suppress weeds, and maintain even soil temperatures around pepper plants."
-    ],
-    "pepper_CercosporaLeafSpot": [
-        "Use disease-resistant pepper varieties whenever possible.",
-        "Practice crop rotation with non-host crops to reduce pathogen buildup in the soil.",
-        "Apply organic mulch around plants to prevent soil splash, which can spread the fungus.",
-        "Avoid overhead irrigation to minimize leaf wetness and create drier conditions unfavorable for fungal growth.",
-        "Apply copper-based fungicides according to label instructions, especially during periods of high humidity or when symptoms first appear."
-    ],
-    "pepper_Fusarium": [
-        "Plant Fusarium-resistant pepper varieties if available.",
-        "Practice crop rotation with non-host crops to reduce soilborne pathogen populations.",
-        "Maintain optimal soil drainage to minimize waterlogging, as Fusarium pathogens thrive in wet conditions.",
-        "Use soil solarization to reduce soilborne pathogens before planting.",
-        "Apply biofungicides containing beneficial microorganisms to the soil to suppress Fusarium growth."
-    ],
-    "pepper_Leaf_Curl": [
-        "Remove and destroy infected plants to prevent the spread of the disease to healthy plants.",
-        "Avoid planting peppers in areas prone to high humidity or where water stagnates, as this can exacerbate leaf curl symptoms.",
-        "Maintain proper spacing between plants to improve air circulation and reduce humidity levels around plants.",
-        "Apply neem oil or horticultural oils to the foliage according to label instructions, as they may help suppress viral vectors like aphids."
-    ]
-}
 
-# Function to preprocess input image
 def preprocess_image(image_path):
     img = Image.open(image_path)
     img = img.resize((256, 256))  # Resize image to match model's input shape
@@ -136,7 +37,6 @@ def preprocess_image(image_path):
     img_array = np.expand_dims(img_array, axis=0)  # Add batch dimension
     return img_array
 
-# Function to predict disease using CNN model
 def L_predict_disease(image_path):
     preprocessed_img = preprocess_image(image_path)
     prediction = model1.predict(preprocessed_img)
@@ -190,19 +90,6 @@ def feedback():
         feed = c1.text_area("message",placeholder="Write a message...",label_visibility="collapsed",)
         b1 = c2.form_submit_button("Send",use_container_width=True)
         b2 = c2.form_submit_button("Cancel",use_container_width=True)
-        
-# Function to generate recommendations using GPT-2
-def generate_recommendations(input_text):
-    input_ids = tokenizer_gpt2.encode(input_text, return_tensors="pt")
-    output = model_gpt2.generate(input_ids, max_length=150, num_return_sequences=1, temperature=0.7)
-    decoded_output = tokenizer_gpt2.decode(output[0], skip_special_tokens=True)
-    return decoded_output
-
-# Function to display recommendations and predicted class
-def display_recommendations(predicted_class):
-    st.subheader("Recommendations:")
-    for recommendation in recommendations.get(predicted_class, []):
-        st.write(recommendation)
 
 
 # =======================================
@@ -299,28 +186,12 @@ with tab2:
                 pred1 = "Predicted Disease Class: " + predicted_class
                 st.image(plantpic,pred1,use_column_width=True)
                 
-                # Generate and display recommendations
-                input_text = "Lettuce " + predicted_class + ":"
-                generated_recommendations = generate_recommendations(input_text)
-                # st.write(generated_recommendations)
-
-                # Display specific recommendations for the predicted class
-                display_recommendations(predicted_class)
-                
             elif select == 'Cauliflower':
                 # predicting Cauliflower disease
                 image_path = plantpic
                 predicted_class = C_predict_disease(image_path)
                 pred2 = "Predicted Disease Class: " + predicted_class
                 st.image(plantpic,pred2,use_column_width=True)
-                
-                # Generate and display recommendations
-                input_text = "Cauliflower " + predicted_class + ":"
-                generated_recommendations = generate_recommendations(input_text)
-                # st.write(generated_recommendations)
-
-                # Display specific recommendations for the predicted class
-                display_recommendations(predicted_class)
                 
             elif select == 'Sugarcane':
                 # predicting Sugarcane disease
@@ -329,28 +200,12 @@ with tab2:
                 pred3 = "Predicted Disease Class: " + predicted_class
                 st.image(plantpic,pred3,use_column_width=True)
                 
-                # Generate and display recommendations
-                input_text = "Sugarcane " + predicted_class + ":"
-                generated_recommendations = generate_recommendations(input_text)
-                # st.write(generated_recommendations)
-
-                # Display specific recommendations for the predicted class
-                display_recommendations(predicted_class)
-                
             elif select == 'Pepper':
                 # predicting Pepper disease
                 image_path = plantpic
                 predicted_class = P_predict_disease(image_path)
                 pred4 = "Predicted Disease Class: " + predicted_class
                 st.image(plantpic,pred4,use_column_width=True)
-                
-                # Generate and display recommendations
-                input_text = "Pepper " + predicted_class + ":"
-                generated_recommendations = generate_recommendations(input_text)
-                # st.write(generated_recommendations)
-
-                # Display specific recommendations for the predicted class
-                display_recommendations(predicted_class)
                 
             feedback()
                
@@ -374,28 +229,12 @@ with tab2:
                 pred1 = "Predicted Disease Class: " + predicted_class
                 st.image(plantpic,pred1,use_column_width=True)
                 
-                # Generate and display recommendations
-                input_text = "Lettuce " + predicted_class + ":"
-                generated_recommendations = generate_recommendations(input_text)
-                # st.write(generated_recommendations)
-
-                # Display specific recommendations for the predicted class
-                display_recommendations(predicted_class)
-                
             elif select == 'Cauliflower':
                 # predicting Cauliflower disease
                 image_path = plantpic
                 predicted_class = C_predict_disease(image_path)
                 pred2 = "Predicted Disease Class: " + predicted_class
                 st.image(plantpic,pred2,use_column_width=True)
-                
-                # Generate and display recommendations
-                input_text = "Cauliflower " + predicted_class + ":"
-                generated_recommendations = generate_recommendations(input_text)
-                # st.write(generated_recommendations)
-
-                # Display specific recommendations for the predicted class
-                display_recommendations(predicted_class)
                 
             elif select == 'Sugarcane':
                 # predicting Sugarcane disease
@@ -404,28 +243,12 @@ with tab2:
                 pred3 = "Predicted Disease Class: " + predicted_class
                 st.image(plantpic,pred3,use_column_width=True)
                 
-                # Generate and display recommendations
-                input_text = "Sugarcane " + predicted_class + ":"
-                generated_recommendations = generate_recommendations(input_text)
-                # st.write(generated_recommendations)
-
-                # Display specific recommendations for the predicted class
-                display_recommendations(predicted_class)
-                
             elif select == 'Pepper':
                 # predicting Pepper disease
                 image_path = plantpic
                 predicted_class = P_predict_disease(image_path)
                 pred4 = "Predicted Disease Class: " + predicted_class
                 st.image(plantpic,pred4,use_column_width=True)
-                
-                # Generate and display recommendations
-                input_text = "Pepper " + predicted_class + ":"
-                generated_recommendations = generate_recommendations(input_text)
-                # st.write(generated_recommendations)
-
-                # Display specific recommendations for the predicted class
-                display_recommendations(predicted_class)
                 
             feedback()
 
