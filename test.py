@@ -4,9 +4,6 @@ import numpy as np
 from PIL import Image
 from keras.models import load_model
 
-<<<<<<< HEAD
-# Load CNN Models
-=======
 # Set page title and favicon
 st.set_page_config(page_title="Crop Health Assessment App", page_icon="🌱")
 
@@ -17,7 +14,6 @@ def enhance_ui():
     st.write("Welcome to the Crop Health Assessment App! Upload an image or even take a picture of a plant to analyze its health.")
 
 
->>>>>>> 8b948d9d4cdffbd6f3b11e907684b4565f7e60bf
 model1 = load_model('official-models/LettuceModel.h5')  # saved model from training
 model2 = load_model('official-models/CauliflowerModel.h5')  # saved model from training
 model3 = load_model('official-models/SugarcaneModel-1.h5')  # saved model from training
