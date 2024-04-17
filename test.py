@@ -304,38 +304,6 @@ with tab2:
         if submit1:
             if not plantpic:
                 st.write("take a photo!")
-<<<<<<< HEAD
-                
-            elif select == 'Lettuce':
-                # predicting Lettuce disease
-                image_path = plantpic
-                predicted_class = L_predict_disease(image_path)
-                pred1 = "Predicted Disease Class: " + predicted_class
-                st.image(plantpic,pred1)
-                
-            elif select == 'Cauliflower':
-                # predicting Cauliflower disease
-                image_path = plantpic
-                predicted_class = C_predict_disease(image_path)
-                pred2 = "Predicted Disease Class: " + predicted_class
-                st.image(plantpic,pred2)
-                
-            elif select == 'Sugarcane':
-                # predicting Sugarcane disease
-                image_path = plantpic
-                predicted_class = S_predict_disease(image_path)
-                pred3 = "Predicted Disease Class: " + predicted_class
-                st.image(plantpic,pred3)
-                
-            elif select == 'Pepper':
-                # predicting Pepper disease
-                image_path = plantpic
-                predicted_class = P_predict_disease(image_path)
-                pred4 = "Predicted Disease Class: " + predicted_class
-                st.image(plantpic,pred4)
-                
-    
-=======
             else:
                 if select == 'Lettuce':
                     # Predict Lettuce disease
@@ -398,7 +366,6 @@ with tab2:
                     display_recommendations(predicted_class)
                     
                     feedback()
->>>>>>> 5e2796fa6640907e4742bb99c7f3f12a635e5d9f
 
 with tab3:
     """
