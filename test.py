@@ -171,26 +171,12 @@ with st.sidebar:
         
         Axel Bert E. Ramos
         """
-<<<<<<< HEAD
-        )
-    
-    # # Add interactive elements
-    # st.sidebar.subheader("Analysis Settings")
-    # threshold = st.sidebar.slider("Confidence Threshold", min_value=0.0, max_value=1.0, value=0.5, step=0.05, help="Adjust the confidence threshold for classification")
-    # # crop_type = st.sidebar.selectbox("Select Crop Type", ["Cauliflower", "Pepper", "Sugarcane", "Lettuce"], help="Choose the type of crop for analysis")
-
-
-# Run the app
-# if __name__ == "__main__":
-#     enhance_ui()
-=======
     )
     
     # Add interactive elements
     st.sidebar.subheader("Analysis Settings")
     threshold = st.sidebar.slider("Confidence Threshold", min_value=0.0, max_value=1.0, value=0.5, step=None, help="Adjust the confidence threshold for classification")
     # crop_type = st.sidebar.selectbox("Select Crop Type", ["Cauliflower", "Pepper", "Sugarcane", "Lettuce"], help="Choose the type of crop for analysis")
->>>>>>> 5e2796fa6640907e4742bb99c7f3f12a635e5d9f
 
 # Main content
 tab1, tab2, tab3 = st.tabs(["Home", "Crop Health Assessment", "About Crop Health Assessment"])
