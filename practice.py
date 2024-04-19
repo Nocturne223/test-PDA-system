@@ -3,7 +3,6 @@ import streamlit as st
 import numpy as np
 from PIL import Image
 from keras.models import load_model
-<<<<<<< HEAD
 
 # Set OpenAI API key from Streamlit secrets
 client = OpenAI(api_key=st.secrets["GPT_MODEL_KEY"])
@@ -11,10 +10,6 @@ client = OpenAI(api_key=st.secrets["GPT_MODEL_KEY"])
 # Set a default model
 if "openai_model" not in st.session_state:
     st.session_state["openai_model"] = "gpt-3.5-turbo"
-=======
-# import torch
-# from transformers import GPT2LMHeadModel, GPT2Tokenizer
->>>>>>> parent of e3d3e45 (Practice-GPT integration)
 
 # Load CNN Models
 model1 = load_model('official-models/LettuceModel.h5')  # saved model from training
