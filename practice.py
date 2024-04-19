@@ -1,19 +1,11 @@
 import os
 import streamlit as st
 import numpy as np
-import openai
 
-from openai import OpenAI
 from PIL import Image
 from keras.models import load_model
 # import torch
 # from transformers import GPT2LMHeadModel, GPT2Tokenizer
-
-# GPT Model Key
-openai.api_key = st.secrets["gpt_model_key"]
-
-if "gpt_model" not in st.session_state:
-    st.session_state["gpt_model"] = "gpt-3.5-turbo"
     
 # Load CNN Models
 model1 = load_model('official-models/LettuceModel.h5')  # saved model from training
