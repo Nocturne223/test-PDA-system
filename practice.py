@@ -7,7 +7,7 @@ from PIL import Image
 from keras.models import load_model
 
 # Set OpenAI API key from Streamlit secrets
-client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+client = OpenAI(api_key=st.secrets["GPT_MODEL_KEY"])
 
 # Set a default model
 if "openai_model" not in st.session_state:
