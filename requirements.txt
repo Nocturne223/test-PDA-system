@@ -1,10 +1,10 @@
-keras==2.13.1
-matplotlib==3.8.2
-streamlit==1.32.0
-numpy==1.23.5
+keras
+matplotlib
+streamlit
+numpy
 openai
 tensorflow
 tensorflow-estimator
-tensorboard==2.13.0
-tensorboard-plugin-wit==1.7.0
-scipy==1.12.0
+tensorboard
+tensorboard-plugin-wit
+scipy
