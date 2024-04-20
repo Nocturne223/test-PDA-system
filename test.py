@@ -1,6 +1,8 @@
 import os
 import streamlit as st
 import numpy as np
+import matplotlib.pyplot as plt
+
 from PIL import Image
 from keras.models import load_model
 # import torch
@@ -134,6 +136,22 @@ def predict_disease(model, image_path, names):
     prediction = model.predict(preprocessed_img)
     disease_index = np.argmax(prediction)  # Get the index of the predicted class
     disease_class = names[disease_index]  # Fetch the class name using the index
+    return disease_class
+
+    if prediction.max() < threshold :   
+        disease_class = "Unidentified plant"
+        
+    st.set_option('deprecation.showPyplotGlobalUse', False)
+    
+    # Generate the plot
+    plt.figure(figsize=(16, 6))
+    plt.subplot(1, 1, 1)
+    plt.plot(max(prediction), label=disease_class, linestyle='-', marker='o', markersize=5)
+    plt.grid(True, which='both', linestyle='--', linewidth=0.1)
+    plt.legend(fontsize=15)
+    
+    st.pyplot()
+    
     return disease_class
 
 # Function to generate recommendations using GPT-2
