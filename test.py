@@ -144,6 +144,15 @@ def generate_svm_plot(prediction_probabilities, class_names):
     plt.grid(True, which='both', linestyle='--', linewidth=0.1)
     plt.legend(fontsize=12)
     
+    # Add explanation
+    explanation = """
+    This plot shows the probability distribution across different classes.
+    Each class represents a potential disease or health status of the crop.
+    The x-axis represents the classes, while the y-axis represents the probability of each class.
+    The class with the highest probability is the predicted disease or health status.
+    """
+    st.write(explanation)
+    
     # Display the plot
     st.pyplot()
     
