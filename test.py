@@ -18,8 +18,6 @@ model4 = load_model('official-models/PepperModel.h5')  # saved model from traini
 # model_gpt2 = GPT2LMHeadModel.from_pretrained("gpt2")
 # tokenizer_gpt2 = GPT2Tokenizer.from_pretrained("gpt2")
 
-prediction = []
-
 # Define plant class names
 Lettuce_names = ["lettuce_BacterialLeafSpot", "lettuce_BotrytisCrownRot", "lettuce_DownyMildew", "lettuce_Healthy"]
 Cauliflower_names = ["cauliflower_BlackRot", "cauliflower_DownyMildew", "cauliflower_Healthy", "cauliflower_SoftRot"]
@@ -151,22 +149,16 @@ def predict_disease(model, image_path, names):
     prediction = model.predict(preprocessed_img)
     disease_index = np.argmax(prediction)  # Get the index of the predicted class
     disease_class = names[disease_index]  # Fetch the class name using the index
-    
-    if prediction.max() < threshold : 
-        disease_class = "Unidentified plant"
-        
-    st.set_option('deprecation.showPyplotGlobalUse', False)
-    
+    return prediction, disease_class  # Return prediction along with disease class
+
     # Generate the plot
     # plt.figure(figsize=(16, 6))
     # plt.subplot(1, 1, 1)
     # plt.plot(max(prediction), label=disease_class, linestyle='-', marker='o', markersize=5)
     # plt.grid(True, which='both', linestyle='--', linewidth=0.1)
     # plt.legend(fontsize=15)
-    
+
     # st.pyplot()
-        
-    return disease_class
 
 # Function to generate recommendations using GPT-2
 # def generate_recommendations(input_text):
@@ -266,7 +258,7 @@ with tab2:
                 if select == 'Lettuce':
                     # Predict Lettuce disease
                     image_path = plantpic
-                    predicted_class = predict_disease(model1, image_path, Lettuce_names)
+                    prediction, predicted_class = predict_disease(model1, image_path, Lettuce_names)
                     pred1 = "Predicted Disease Class: " + predicted_class
                     st.image(plantpic, pred1, use_column_width=True)
 
@@ -284,7 +276,7 @@ with tab2:
                 elif select == 'Cauliflower':
                     # Predict Cauliflower disease
                     image_path = plantpic
-                    predicted_class = predict_disease(model2, image_path, Cauliflower_names)
+                    prediction, predicted_class = predict_disease(model2, image_path, Cauliflower_names)
                     pred2 = "Predicted Disease Class: " + predicted_class
                     st.image(plantpic, pred2, use_column_width=True)
 
@@ -302,7 +294,7 @@ with tab2:
                 elif select == 'Sugarcane':
                     # Predict Sugarcane disease
                     image_path = plantpic
-                    predicted_class = predict_disease(model3, image_path, Sugarcane_names)
+                    prediction, predicted_class = predict_disease(model3, image_path, Sugarcane_names)
                     pred3 = "Predicted Disease Class: " + predicted_class
                     st.image(plantpic, pred3, use_column_width=True)
 
@@ -320,7 +312,7 @@ with tab2:
                 elif select == 'Pepper':
                     # Predict Pepper disease
                     image_path = plantpic
-                    predicted_class = predict_disease(model4, image_path, Pepper_names)
+                    prediction, predicted_class = predict_disease(model4, image_path, Pepper_names)
                     pred4 = "Predicted Disease Class: " + predicted_class
                     st.image(plantpic, pred4, use_column_width=True)
 
@@ -352,7 +344,7 @@ with tab2:
                 if select == 'Lettuce':
                     # Predict Lettuce disease
                     image_path = plantpic
-                    predicted_class = predict_disease(model1, image_path, Lettuce_names)
+                    prediction, predicted_class = predict_disease(model1, image_path, Lettuce_names)
                     pred1 = "Predicted Disease Class: " + predicted_class
                     st.image(plantpic, pred1, use_column_width=True)
 
@@ -370,7 +362,7 @@ with tab2:
                 elif select == 'Cauliflower':
                     # Predict Cauliflower disease
                     image_path = plantpic
-                    predicted_class = predict_disease(model2, image_path, Cauliflower_names)
+                    prediction, predicted_class = predict_disease(model2, image_path, Cauliflower_names)
                     pred2 = "Predicted Disease Class: " + predicted_class
                     st.image(plantpic, pred2, use_column_width=True)
 
@@ -388,7 +380,7 @@ with tab2:
                 elif select == 'Sugarcane':
                     # Predict Sugarcane disease
                     image_path = plantpic
-                    predicted_class = predict_disease(model3, image_path, Sugarcane_names)
+                    prediction, predicted_class = predict_disease(model3, image_path, Sugarcane_names)
                     pred3 = "Predicted Disease Class: " + predicted_class
                     st.image(plantpic, pred3, use_column_width=True)
 
@@ -406,7 +398,7 @@ with tab2:
                 elif select == 'Pepper':
                     # Predict Pepper disease
                     image_path = plantpic
-                    predicted_class = predict_disease(model4, image_path, Pepper_names)
+                    prediction, predicted_class = predict_disease(model4, image_path, Pepper_names)
                     pred4 = "Predicted Disease Class: " + predicted_class
                     st.image(plantpic, pred4, use_column_width=True)
 
