@@ -286,7 +286,7 @@ with tab2:
                     generate_svm_plot(prediction, predicted_class)
                     
                     true_labels = ["lettuce_BacterialLeafSpot", "lettuce_BotrytisCrownRot", "lettuce_DownyMildew", "lettuce_Healthy"]  # True label for Lettuce
-                    predicted_labels = [predicted_class]  # Predicted label for Lettuce               
+                    predicted_labels = ["lettuce_BacterialLeafSpot", "lettuce_BotrytisCrownRot", "lettuce_DownyMildew", "lettuce_Healthy"]  # Predicted label for Lettuce               
                     
                     # Add evaluation metrics display after generating SVM plot
                     display_evaluation_metrics(true_labels, predicted_labels)
