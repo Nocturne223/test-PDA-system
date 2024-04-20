@@ -151,15 +151,6 @@ def predict_disease(model, image_path, names):
     disease_class = names[disease_index]  # Fetch the class name using the index
     return prediction, disease_class  # Return prediction along with disease class
 
-    # Generate the plot
-    # plt.figure(figsize=(16, 6))
-    # plt.subplot(1, 1, 1)
-    # plt.plot(max(prediction), label=disease_class, linestyle='-', marker='o', markersize=5)
-    # plt.grid(True, which='both', linestyle='--', linewidth=0.1)
-    # plt.legend(fontsize=15)
-
-    # st.pyplot()
-
 # Function to generate recommendations using GPT-2
 # def generate_recommendations(input_text):
 #     input_ids = tokenizer_gpt2.encode(input_text, return_tensors="pt")
