@@ -291,6 +291,9 @@ with tab2:
                     # Add evaluation metrics display after generating SVM plot
                     display_evaluation_metrics(true_labels, predicted_labels)
                     
+                    st.write(true_labels)
+                    st.write(predicted_labels)
+                    
 
                 elif select == 'Cauliflower':
                     # Predict Cauliflower disease
@@ -315,6 +318,9 @@ with tab2:
                     
                     # Add evaluation metrics display after generating SVM plot
                     display_evaluation_metrics(true_labels, predicted_labels)
+                    
+                    st.write(true_labels)
+                    st.write(predicted_labels)
 
                 elif select == 'Sugarcane':
                     # Predict Sugarcane disease
@@ -339,6 +345,9 @@ with tab2:
                     
                     # Add evaluation metrics display after generating SVM plot
                     display_evaluation_metrics(true_labels, predicted_labels)
+                    
+                    st.write(true_labels)
+                    st.write(predicted_labels)
 
                 elif select == 'Pepper':
                     # Predict Pepper disease
@@ -430,6 +439,9 @@ with tab2:
                     
                     # Add evaluation metrics display after generating SVM plot
                     display_evaluation_metrics(true_labels, predicted_labels)
+                    
+                    st.write(true_labels)
+                    st.write(predicted_labels)
 
                 elif select == 'Sugarcane':
                     # Predict Sugarcane disease
@@ -454,6 +466,9 @@ with tab2:
                     
                     # Add evaluation metrics display after generating SVM plot
                     display_evaluation_metrics(true_labels, predicted_labels)
+                    
+                    st.write(true_labels)
+                    st.write(predicted_labels)
 
                 elif select == 'Pepper':
                     # Predict Pepper disease
