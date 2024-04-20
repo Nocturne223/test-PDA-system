@@ -18,6 +18,8 @@ model4 = load_model('official-models/PepperModel.h5')  # saved model from traini
 # model_gpt2 = GPT2LMHeadModel.from_pretrained("gpt2")
 # tokenizer_gpt2 = GPT2Tokenizer.from_pretrained("gpt2")
 
+prediction = 0.0
+
 # Define plant class names
 Lettuce_names = ["lettuce_BacterialLeafSpot", "lettuce_BotrytisCrownRot", "lettuce_DownyMildew", "lettuce_Healthy"]
 Cauliflower_names = ["cauliflower_BlackRot", "cauliflower_DownyMildew", "cauliflower_Healthy", "cauliflower_SoftRot"]
