@@ -260,6 +260,9 @@ with tab2:
 
                     # Display specific recommendations for the predicted class
                     display_recommendations(predicted_class)
+                    
+                    # Generate SVM plot
+                    generate_svm_plot(prediction, predicted_class)
 
                 elif select == 'Cauliflower':
                     # Predict Cauliflower disease
@@ -275,6 +278,9 @@ with tab2:
 
                     # Display specific recommendations for the predicted class
                     display_recommendations(predicted_class)
+                    
+                    # Generate SVM plot
+                    generate_svm_plot(prediction, predicted_class)
 
                 elif select == 'Sugarcane':
                     # Predict Sugarcane disease
@@ -290,6 +296,9 @@ with tab2:
 
                     # Display specific recommendations for the predicted class
                     display_recommendations(predicted_class)
+                    
+                    # Generate SVM plot
+                    generate_svm_plot(prediction, predicted_class)
 
                 elif select == 'Pepper':
                     # Predict Pepper disease
@@ -305,6 +314,9 @@ with tab2:
 
                     # Display specific recommendations for the predicted class
                     display_recommendations(predicted_class)
+                    
+                    # Generate SVM plot
+                    generate_svm_plot(prediction, predicted_class)
                     
                     feedback()
 
@@ -334,6 +346,9 @@ with tab2:
 
                     # Display specific recommendations for the predicted class
                     display_recommendations(predicted_class)
+                    
+                    # Generate SVM plot
+                    generate_svm_plot(prediction, predicted_class)
 
                 elif select == 'Cauliflower':
                     # Predict Cauliflower disease
@@ -349,6 +364,9 @@ with tab2:
 
                     # Display specific recommendations for the predicted class
                     display_recommendations(predicted_class)
+                    
+                    # Generate SVM plot
+                    generate_svm_plot(prediction, predicted_class)
 
                 elif select == 'Sugarcane':
                     # Predict Sugarcane disease
@@ -364,6 +382,9 @@ with tab2:
 
                     # Display specific recommendations for the predicted class
                     display_recommendations(predicted_class)
+                    
+                    # Generate SVM plot
+                    generate_svm_plot(prediction, predicted_class)
 
                 elif select == 'Pepper':
                     # Predict Pepper disease
@@ -379,6 +400,9 @@ with tab2:
 
                     # Display specific recommendations for the predicted class
                     display_recommendations(predicted_class)
+                    
+                    # Generate SVM plot
+                    generate_svm_plot(prediction, predicted_class)
                     
                     feedback()
 
