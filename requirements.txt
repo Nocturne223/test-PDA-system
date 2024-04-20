@@ -8,4 +8,4 @@ tensorflow==2.13.1
 tensorflow-estimator==2.13.0
 scipy==1.12.0
 matplotlib
-sklearn
+scikit-learn
