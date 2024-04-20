@@ -427,7 +427,7 @@ with tab2:
                     # Generate SVM plot
                     generate_svm_plot(prediction, predicted_class)
                     
-                    st.write(Lettuce_names)
+                    st.write(Lettuce_names[0], Lettuce_names[1], Lettuce_names[2], Lettuce_names[3])
                     
                     true_labels = ["lettuce_BacterialLeafSpot", "lettuce_BotrytisCrownRot", "lettuce_DownyMildew", "lettuce_Healthy"]  # True label for Lettuce
                     predicted_labels = [predicted_class] * len(true_labels)  # Predicted label for Lettuce               
@@ -453,7 +453,7 @@ with tab2:
                     # Generate SVM plot
                     generate_svm_plot(prediction, predicted_class)
                     
-                    st.write(Cauliflower_names)
+                    st.write(Cauliflower_names[0], Cauliflower_names[1], Cauliflower_names[2], Cauliflower_names[3])
                     
                     true_labels = ["cauliflower_BlackRot", "cauliflower_DownyMildew", "cauliflower_Healthy", "cauliflower_SoftRot"]  # True label for Cauliflower
                     predicted_labels = [predicted_class] * len(true_labels)  # Predicted label for Cauliflower
