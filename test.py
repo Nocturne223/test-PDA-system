@@ -286,7 +286,7 @@ with tab2:
                     generate_svm_plot(prediction, predicted_class)
                     
                     true_labels = ["lettuce_BacterialLeafSpot", "lettuce_BotrytisCrownRot", "lettuce_DownyMildew", "lettuce_Healthy"]  # True label for Lettuce
-                    predicted_labels = ["lettuce_BacterialLeafSpot", "lettuce_BotrytisCrownRot", "lettuce_DownyMildew", "lettuce_Healthy"]  # Predicted label for Lettuce               
+                    predicted_labels = [predicted_class] * len(true_labels)  # Predicted label for Lettuce               
                     
                     # Add evaluation metrics display after generating SVM plot
                     display_evaluation_metrics(true_labels, predicted_labels)
@@ -308,7 +308,7 @@ with tab2:
                     display_recommendations(predicted_class)
                     
                     true_labels = ["cauliflower_BlackRot", "cauliflower_DownyMildew", "cauliflower_Healthy", "cauliflower_SoftRot"]  # True label for Cauliflower
-                    predicted_labels = [predicted_class]  # Predicted label for Cauliflower
+                    predicted_labels = [predicted_class] * len(true_labels)  # Predicted label for Cauliflower
                     
                     # Generate SVM plot
                     generate_svm_plot(prediction, predicted_class)
@@ -329,7 +329,7 @@ with tab2:
                     display_recommendations(predicted_class)
                     
                     true_labels = ["sugarcane_Healthy", "sugarcane_Mosaic", "sugarcane_RedRot", "sugarcane_Rust"]  # True label for Sugarcane
-                    predicted_labels = [predicted_class]  # Predicted label for Sugarcane
+                    predicted_labels = [predicted_class] * len(true_labels)  # Predicted label for Sugarcane
                     
                     # Generate SVM plot
                     generate_svm_plot(prediction, predicted_class)
@@ -350,7 +350,7 @@ with tab2:
                     display_recommendations(predicted_class)
                     
                     true_labels = ["pepper_Healthy", "pepper_CercosporaLeafSpot", "pepper_Fusarium", "pepper_Leaf_Curl"]  # True label for Pepper
-                    predicted_labels = [predicted_class]  # Predicted label for Pepper
+                    predicted_labels = [predicted_class] * len(true_labels)  # Predicted label for Pepper
                     
                     # Generate SVM plot
                     generate_svm_plot(prediction, predicted_class)
@@ -386,6 +386,12 @@ with tab2:
                     
                     # Generate SVM plot
                     generate_svm_plot(prediction, predicted_class)
+                    
+                    true_labels = ["lettuce_BacterialLeafSpot", "lettuce_BotrytisCrownRot", "lettuce_DownyMildew", "lettuce_Healthy"]  # True label for Lettuce
+                    predicted_labels = [predicted_class] * len(true_labels)  # Predicted label for Lettuce               
+                    
+                    # Add evaluation metrics display after generating SVM plot
+                    display_evaluation_metrics(true_labels, predicted_labels)
 
                 elif select == 'Cauliflower':
                     # Predict Cauliflower disease
@@ -402,6 +408,9 @@ with tab2:
                     # Display specific recommendations for the predicted class
                     display_recommendations(predicted_class)
                     
+                    true_labels = ["cauliflower_BlackRot", "cauliflower_DownyMildew", "cauliflower_Healthy", "cauliflower_SoftRot"]  # True label for Cauliflower
+                    predicted_labels = [predicted_class] * len(true_labels)  # Predicted label for Cauliflower
+                    
                     # Generate SVM plot
                     generate_svm_plot(prediction, predicted_class)
 
@@ -415,10 +424,13 @@ with tab2:
                     # Generate and display recommendations
                     input_text = "Sugarcane " + predicted_class + ":"
                     # generated_recommendations = generate_recommendations(input_text)
-                   # st.write(generated_recommendations)
+                    # st.write(generated_recommendations)
 
                     # Display specific recommendations for the predicted class
                     display_recommendations(predicted_class)
+                    
+                    true_labels = ["sugarcane_Healthy", "sugarcane_Mosaic", "sugarcane_RedRot", "sugarcane_Rust"]  # True label for Sugarcane
+                    predicted_labels = [predicted_class] * len(true_labels)  # Predicted label for Sugarcane
                     
                     # Generate SVM plot
                     generate_svm_plot(prediction, predicted_class)
@@ -437,6 +449,9 @@ with tab2:
 
                     # Display specific recommendations for the predicted class
                     display_recommendations(predicted_class)
+                    
+                    true_labels = ["pepper_Healthy", "pepper_CercosporaLeafSpot", "pepper_Fusarium", "pepper_Leaf_Curl"]  # True label for Pepper
+                    predicted_labels = [predicted_class] * len(true_labels)  # Predicted label for Pepper
                     
                     # Generate SVM plot
                     generate_svm_plot(prediction, predicted_class)
