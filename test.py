@@ -18,7 +18,7 @@ model4 = load_model('official-models/PepperModel.h5')  # saved model from traini
 # model_gpt2 = GPT2LMHeadModel.from_pretrained("gpt2")
 # tokenizer_gpt2 = GPT2Tokenizer.from_pretrained("gpt2")
 
-prediction = 0.0
+prediction = []
 
 # Define plant class names
 Lettuce_names = ["lettuce_BacterialLeafSpot", "lettuce_BotrytisCrownRot", "lettuce_DownyMildew", "lettuce_Healthy"]
@@ -135,7 +135,7 @@ def preprocess_image(image_path):
 # Function to generate plot for SVM predictions
 def generate_svm_plot(prediction_probabilities, class_names):
     plt.figure(figsize=(10, 6))
-    plt.plot(prediction_probabilities, label=class_names, linestyle='-', marker='o', markersize=5)
+    plt.plot(prediction_probabilities[0], label=class_names, linestyle='-', marker='o', markersize=5)
     plt.xlabel('Classes')
     plt.ylabel('Probability')
     plt.title('Prediction Probabilities')
@@ -151,6 +151,21 @@ def predict_disease(model, image_path, names):
     prediction = model.predict(preprocessed_img)
     disease_index = np.argmax(prediction)  # Get the index of the predicted class
     disease_class = names[disease_index]  # Fetch the class name using the index
+    
+    if prediction.max() < threshold : 
+        disease_class = "Unidentified plant"
+        
+    st.set_option('deprecation.showPyplotGlobalUse', False)
+    
+    # Generate the plot
+    # plt.figure(figsize=(16, 6))
+    # plt.subplot(1, 1, 1)
+    # plt.plot(max(prediction), label=disease_class, linestyle='-', marker='o', markersize=5)
+    # plt.grid(True, which='both', linestyle='--', linewidth=0.1)
+    # plt.legend(fontsize=15)
+    
+    # st.pyplot()
+        
     return disease_class
 
 # Function to generate recommendations using GPT-2
