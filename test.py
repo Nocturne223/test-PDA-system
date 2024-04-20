@@ -2,6 +2,7 @@ import os
 import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
+import sklearn
  
 from PIL import Image
 from keras.models import load_model
