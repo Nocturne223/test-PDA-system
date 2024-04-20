@@ -307,11 +307,14 @@ with tab2:
                     # Display specific recommendations for the predicted class
                     display_recommendations(predicted_class)
                     
+                    # Generate SVM plot
+                    generate_svm_plot(prediction, predicted_class)
+                    
                     true_labels = ["cauliflower_BlackRot", "cauliflower_DownyMildew", "cauliflower_Healthy", "cauliflower_SoftRot"]  # True label for Cauliflower
                     predicted_labels = [predicted_class] * len(true_labels)  # Predicted label for Cauliflower
                     
-                    # Generate SVM plot
-                    generate_svm_plot(prediction, predicted_class)
+                    # Add evaluation metrics display after generating SVM plot
+                    display_evaluation_metrics(true_labels, predicted_labels)
 
                 elif select == 'Sugarcane':
                     # Predict Sugarcane disease
@@ -328,11 +331,14 @@ with tab2:
                     # Display specific recommendations for the predicted class
                     display_recommendations(predicted_class)
                     
+                    # Generate SVM plot
+                    generate_svm_plot(prediction, predicted_class)
+                    
                     true_labels = ["sugarcane_Healthy", "sugarcane_Mosaic", "sugarcane_RedRot", "sugarcane_Rust"]  # True label for Sugarcane
                     predicted_labels = [predicted_class] * len(true_labels)  # Predicted label for Sugarcane
                     
-                    # Generate SVM plot
-                    generate_svm_plot(prediction, predicted_class)
+                    # Add evaluation metrics display after generating SVM plot
+                    display_evaluation_metrics(true_labels, predicted_labels)
 
                 elif select == 'Pepper':
                     # Predict Pepper disease
@@ -349,6 +355,14 @@ with tab2:
                     # Display specific recommendations for the predicted class
                     display_recommendations(predicted_class)
                     
+                    # Generate SVM plot
+                    generate_svm_plot(prediction, predicted_class)
+                    
+                    true_labels = ["pepper_Healthy", "pepper_CercosporaLeafSpot", "pepper_Fusarium", "pepper_Leaf_Curl"]  # True label for Pepper
+                    predicted_labels = [predicted_class] * len(true_labels)  # Predicted label for Pepper
+                    
+                    # Add evaluation metrics display after generating SVM plot
+                    display_evaluation_metrics(true_labels, predicted_labels)    
                     true_labels = ["pepper_Healthy", "pepper_CercosporaLeafSpot", "pepper_Fusarium", "pepper_Leaf_Curl"]  # True label for Pepper
                     predicted_labels = [predicted_class] * len(true_labels)  # Predicted label for Pepper
                     
@@ -408,11 +422,14 @@ with tab2:
                     # Display specific recommendations for the predicted class
                     display_recommendations(predicted_class)
                     
+                    # Generate SVM plot
+                    generate_svm_plot(prediction, predicted_class)
+                    
                     true_labels = ["cauliflower_BlackRot", "cauliflower_DownyMildew", "cauliflower_Healthy", "cauliflower_SoftRot"]  # True label for Cauliflower
                     predicted_labels = [predicted_class] * len(true_labels)  # Predicted label for Cauliflower
                     
-                    # Generate SVM plot
-                    generate_svm_plot(prediction, predicted_class)
+                    # Add evaluation metrics display after generating SVM plot
+                    display_evaluation_metrics(true_labels, predicted_labels)
 
                 elif select == 'Sugarcane':
                     # Predict Sugarcane disease
@@ -429,11 +446,14 @@ with tab2:
                     # Display specific recommendations for the predicted class
                     display_recommendations(predicted_class)
                     
+                    # Generate SVM plot
+                    generate_svm_plot(prediction, predicted_class)
+                    
                     true_labels = ["sugarcane_Healthy", "sugarcane_Mosaic", "sugarcane_RedRot", "sugarcane_Rust"]  # True label for Sugarcane
                     predicted_labels = [predicted_class] * len(true_labels)  # Predicted label for Sugarcane
                     
-                    # Generate SVM plot
-                    generate_svm_plot(prediction, predicted_class)
+                    # Add evaluation metrics display after generating SVM plot
+                    display_evaluation_metrics(true_labels, predicted_labels)
 
                 elif select == 'Pepper':
                     # Predict Pepper disease
@@ -450,11 +470,14 @@ with tab2:
                     # Display specific recommendations for the predicted class
                     display_recommendations(predicted_class)
                     
+                    # Generate SVM plot
+                    generate_svm_plot(prediction, predicted_class)
+                    
                     true_labels = ["pepper_Healthy", "pepper_CercosporaLeafSpot", "pepper_Fusarium", "pepper_Leaf_Curl"]  # True label for Pepper
                     predicted_labels = [predicted_class] * len(true_labels)  # Predicted label for Pepper
                     
-                    # Generate SVM plot
-                    generate_svm_plot(prediction, predicted_class)
+                    # Add evaluation metrics display after generating SVM plot
+                    display_evaluation_metrics(true_labels, predicted_labels)
                     
                     feedback()
 
