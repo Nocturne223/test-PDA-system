@@ -135,6 +135,7 @@ def preprocess_image(image_path):
 
 # Function to generate plot for SVM predictions
 def generate_svm_plot(prediction_probabilities, class_names):
+    st.set_option('deprecation.showPyplotGlobalUse', False)
     plt.figure(figsize=(10, 6))
     plt.plot(prediction_probabilities[0], label=class_names, linestyle='-', marker='o', markersize=5)
     plt.xlabel('Classes')
