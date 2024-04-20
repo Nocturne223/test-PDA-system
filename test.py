@@ -453,7 +453,7 @@ with tab2:
                     # Generate SVM plot
                     generate_svm_plot(prediction, predicted_class)
                     
-                    st.write(Cauliflower_names[0], Cauliflower_names[1], Cauliflower_names[2], Cauliflower_names[3])
+                    st.write("""Class 0.0: """, Cauliflower_names[0], """Class 1.0: """, Cauliflower_names[1], """Class 2.0: """, Cauliflower_names[2], """Class 3.0: """, Cauliflower_names[3])
                     
                     true_labels = ["cauliflower_BlackRot", "cauliflower_DownyMildew", "cauliflower_Healthy", "cauliflower_SoftRot"]  # True label for Cauliflower
                     predicted_labels = [predicted_class] * len(true_labels)  # Predicted label for Cauliflower
