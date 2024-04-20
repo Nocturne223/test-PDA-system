@@ -294,6 +294,8 @@ with tab2:
                     # Generate SVM plot
                     generate_svm_plot(prediction, predicted_class)
                     
+                    st.write(Lettuce_names)
+                    
                     true_labels = ["lettuce_BacterialLeafSpot", "lettuce_BotrytisCrownRot", "lettuce_DownyMildew", "lettuce_Healthy"]  # True label for Lettuce
                     predicted_labels = [predicted_class] * len(true_labels)  # Predicted label for Lettuce               
                     
@@ -322,6 +324,8 @@ with tab2:
                     # Generate SVM plot
                     generate_svm_plot(prediction, predicted_class)
                     
+                    st.write(Cauliflower_names)
+                    
                     true_labels = ["cauliflower_BlackRot", "cauliflower_DownyMildew", "cauliflower_Healthy", "cauliflower_SoftRot"]  # True label for Cauliflower
                     predicted_labels = [predicted_class] * len(true_labels)  # Predicted label for Cauliflower
                     
@@ -349,6 +353,8 @@ with tab2:
                     # Generate SVM plot
                     generate_svm_plot(prediction, predicted_class)
                     
+                    st.write(Sugarcane_names)
+                    
                     true_labels = ["sugarcane_Healthy", "sugarcane_Mosaic", "sugarcane_RedRot", "sugarcane_Rust"]  # True label for Sugarcane
                     predicted_labels = [predicted_class] * len(true_labels)  # Predicted label for Sugarcane
                     
@@ -375,6 +381,8 @@ with tab2:
                     
                     # Generate SVM plot
                     generate_svm_plot(prediction, predicted_class)
+                    
+                    st.write(Pepper_names)
                     
                     true_labels = ["pepper_Healthy", "pepper_CercosporaLeafSpot", "pepper_Fusarium", "pepper_Leaf_Curl"]  # True label for Pepper
                     predicted_labels = [predicted_class] * len(true_labels)  # Predicted label for Pepper
@@ -419,6 +427,8 @@ with tab2:
                     # Generate SVM plot
                     generate_svm_plot(prediction, predicted_class)
                     
+                    st.write(Lettuce_names)
+                    
                     true_labels = ["lettuce_BacterialLeafSpot", "lettuce_BotrytisCrownRot", "lettuce_DownyMildew", "lettuce_Healthy"]  # True label for Lettuce
                     predicted_labels = [predicted_class] * len(true_labels)  # Predicted label for Lettuce               
                     
@@ -442,6 +452,8 @@ with tab2:
                     
                     # Generate SVM plot
                     generate_svm_plot(prediction, predicted_class)
+                    
+                    st.write(Cauliflower_names)
                     
                     true_labels = ["cauliflower_BlackRot", "cauliflower_DownyMildew", "cauliflower_Healthy", "cauliflower_SoftRot"]  # True label for Cauliflower
                     predicted_labels = [predicted_class] * len(true_labels)  # Predicted label for Cauliflower
@@ -470,6 +482,8 @@ with tab2:
                     # Generate SVM plot
                     generate_svm_plot(prediction, predicted_class)
                     
+                    st.write(Sugarcane_names)
+                    
                     true_labels = ["sugarcane_Healthy", "sugarcane_Mosaic", "sugarcane_RedRot", "sugarcane_Rust"]  # True label for Sugarcane
                     predicted_labels = [predicted_class] * len(true_labels)  # Predicted label for Sugarcane
                     
@@ -496,6 +510,8 @@ with tab2:
                     
                     # Generate SVM plot
                     generate_svm_plot(prediction, predicted_class)
+                    
+                    st.write(Pepper_names)
                     
                     true_labels = ["pepper_Healthy", "pepper_CercosporaLeafSpot", "pepper_Fusarium", "pepper_Leaf_Curl"]  # True label for Pepper
                     predicted_labels = [predicted_class] * len(true_labels)  # Predicted label for Pepper
