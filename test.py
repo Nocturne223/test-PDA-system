@@ -130,27 +130,25 @@ def preprocess_image(image_path):
     img_array = np.expand_dims(img_array, axis=0)  # Add batch dimension
     return img_array
 
+# Function to generate plot for SVM predictions
+def generate_svm_plot(prediction_probabilities, class_names):
+    plt.figure(figsize=(10, 6))
+    plt.plot(prediction_probabilities, label=class_names, linestyle='-', marker='o', markersize=5)
+    plt.xlabel('Classes')
+    plt.ylabel('Probability')
+    plt.title('Prediction Probabilities')
+    plt.grid(True, which='both', linestyle='--', linewidth=0.1)
+    plt.legend(fontsize=12)
+    
+    # Display the plot
+    st.pyplot()
+
 # Function to predict disease using CNN model
 def predict_disease(model, image_path, names):
     preprocessed_img = preprocess_image(image_path)
     prediction = model.predict(preprocessed_img)
     disease_index = np.argmax(prediction)  # Get the index of the predicted class
     disease_class = names[disease_index]  # Fetch the class name using the index
-
-    if prediction.max() < threshold :   
-        disease_class = "Unidentified plant"
-        
-    st.set_option('deprecation.showPyplotGlobalUse', False)
-    
-    # Generate the plot
-    plt.figure(figsize=(16, 6))
-    plt.subplot(1, 1, 1)
-    plt.plot(max(prediction), label=disease_class, linestyle='-', marker='o', markersize=5)
-    plt.grid(True, which='both', linestyle='--', linewidth=0.1)
-    plt.legend(fontsize=15)
-    
-    st.pyplot()
-    
     return disease_class
 
 # Function to generate recommendations using GPT-2
