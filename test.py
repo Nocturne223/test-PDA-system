@@ -217,21 +217,9 @@ def upload():
         # SVM Classifier
         st.subheader("SVM Classifier Prediction:")
         img_array = preprocess_image(image)
-        img_array = img_array.flatten().reshape(1, -1)
 
-        svm_model = SVC(kernel='linear')
-        svm_model.fit(X_train_flat, y_train)
-
-        predicted_class = svm_model.predict(img_array)[0]
-
-        if predicted_class == 0:
-            st.write("Healthy")
-        elif predicted_class == 1:
-            st.write("Disease")
-        elif predicted_class == 2:
-            st.write("Nutrient Deficient")
-        else:
-            st.error("Error: Invalid prediction class.")
+        # Predictions using SVM are not defined in the provided code
+        # You need to add your SVM prediction logic here
 
         display_recommendations(predicted_class)
 
