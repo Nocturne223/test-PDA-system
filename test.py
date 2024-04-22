@@ -181,18 +181,10 @@ def predict_disease(model, image_path, names):
     disease_class = names[disease_index]  # Fetch the class name using the index
     return prediction, disease_class  # Return prediction along with disease class
 
-# Function to generate recommendations using GPT-2
-# def generate_recommendations(input_text):
-#     input_ids = tokenizer_gpt2.encode(input_text, return_tensors="pt")
-#     output = model_gpt2.generate(input_ids, max_length=150, num_return_sequences=1, temperature=0.7)
-#     decoded_output = tokenizer_gpt2.decode(output[0], skip_special_tokens=True)
-#     return decoded_output
-
 # Function to display recommendations and predicted class
-def display_recommendations(predicted_class):
-    st.subheader("Recommendations:")
-    for recommendation in recommendations.get(predicted_class, []):
-        st.write(recommendation)
+def get_recommendations(predicted_class):
+    return recommendations.get(predicted_class, [])
+
 
 # Function to generate a Feedback form
 def feedback():
